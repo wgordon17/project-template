@@ -276,7 +276,7 @@ def test_renovate_has_template_config(generated_template_project):
     """Template repo (_is_template=True) has template-specific managers."""
     data = parse_json(generated_template_project / ".github" / "renovate.json")
     managers = data.get("customManagers", [])
-    template_managers = [m for m in managers if any("template/" in f for f in m.get("fileMatch", []))]
+    template_managers = [m for m in managers if any("template/" in f for f in m.get("managerFilePatterns", []))]
     assert template_managers, "No template-specific customManagers found"
 
 
