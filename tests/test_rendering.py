@@ -133,6 +133,13 @@ def test_prek_valid_toml(generated_project):
     parse_toml(generated_project / "prek.toml")
 
 
+def test_prek_repos_have_hooks(generated_project):
+    """Every [[repos]] entry in prek.toml has at least one hook."""
+    data = parse_toml(generated_project / "prek.toml")
+    for repo in data.get("repos", []):
+        assert repo.get("hooks"), f"Repo {repo.get('repo', 'local')} has no hooks"
+
+
 def test_cog_valid_toml(generated_project):
     """cog.toml renders as valid TOML for all platforms."""
     parse_toml(generated_project / "cog.toml")
