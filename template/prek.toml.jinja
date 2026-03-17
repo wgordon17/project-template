@@ -127,11 +127,11 @@ name = "Lint GitHub Actions workflows"
 priority = 0
 {% endif %}
 
+{% if hosting_platform == 'github' %}
+
 [[repos]]
 repo = "https://github.com/python-jsonschema/check-jsonschema"
 rev = "0.37.0"
-
-{% if hosting_platform == 'github' %}
 
 [[repos.hooks]]
 id = "check-github-actions"
